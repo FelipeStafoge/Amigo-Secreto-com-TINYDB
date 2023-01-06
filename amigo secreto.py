@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import choice
 from tinydb import TinyDB
 
 db = TinyDB('db.json')
@@ -69,20 +69,10 @@ def sorteio():
     for i in db.all():
         listaid.append(db.all()[soma]['ID'])
         soma += 1
-
-    sorte = randint(listaid, listaid)
+    sorte = choice(listaid) - 1
+    print(listaid)
     print(f"O sorteado foi {db.all()[sorte]['nome']} e o que ele quer de presente é um/a {db.all()[sorte]['presente']}")
-    print()
     menu()
 
 
-listaid = []
-soma = 0
-for i in db.all():
-    listaid.append(db.all()[soma]['ID'])
-    soma += 1
-sorte = choice(listaid)-1
-print(listaid)
-print(sorte)
-print(f"O sorteado foi {db.all()[sorte]['nome']} e o que ele quer de presente é um/a {db.all()[sorte]['presente']}")
 menu()
